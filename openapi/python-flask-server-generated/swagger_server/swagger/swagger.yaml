@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: Bot API
+  description: An API made for a gmail bot
+  contact:
+    email: dinu.gabrielmarius00@gmail.com
+  version: 1.0.0
+servers:
+- url: http://gmailbot.com
+paths:
+  /task:
+    get:
+      summary: Get mail adress
+      description: This operation allows you to feach user mail adress.
+      operationId: getuser_mail
+      parameters:
+      - name: userMail
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: examplemailadress@gmail.com
+      responses:
+        "200":
+          description: Success Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+    post:
+      summary: Add new user
+      description: This allows you to add a new user.
+      operationId: add_user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+      responses:
+        "201":
+          description: Record Successfully added
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+components:
+  schemas:
+    user:
+      required:
+      - userMail
+      type: object
+      properties:
+        userMail:
+          type: string
+        keyWords:
+          type: array
+          items:
+            type: string
+      example:
+        keyWords:
+        - keyWords
+        - keyWords
+        userMail: userMail
+
