@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: dinu.gabrielmarius00@gmail.com
+  description: An API made for a gmail bot
+  title: Bot API
+  version: 1.0.0
+servers:
+- url: http://gmailbot.com
+paths:
+  /task:
+    get:
+      description: This operation allows you to feach user mail adress.
+      operationId: getuser_mail
+      parameters:
+      - explode: true
+        in: query
+        name: userMail
+        required: true
+        schema:
+          example: examplemailadress@gmail.com
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+          description: Success Response
+      summary: Get mail adress
+      x-openapi-router-controller: openapi_server.controllers.default_controller
+    post:
+      description: This allows you to add a new user.
+      operationId: add_user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+      responses:
+        "201":
+          description: Record Successfully added
+      summary: Add new user
+      x-openapi-router-controller: openapi_server.controllers.default_controller
+components:
+  schemas:
+    user:
+      example:
+        keyWords:
+        - keyWords
+        - keyWords
+        userMail: userMail
+      properties:
+        userMail:
+          title: userMail
+          type: string
+        keyWords:
+          items:
+            type: string
+          title: keyWords
+          type: array
+      required:
+      - userMail
+      title: user
+      type: object
