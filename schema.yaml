@@ -12,7 +12,7 @@ paths:
     get:
       summary: Get mail adress
       description: This operation allows you to feach user mail adress.
-      operationId: getuserMail
+      operationId: get_user_mail
       parameters:
         - in: query
           name: userMail
@@ -27,10 +27,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/user'
+      x-openapi-router-controller: controller
     post:
       summary: Add new user
       description: This allows you to add a new user.
-      operationId: addUser
+      operationId: add_user
       requestBody:
         content:
           application/json:
@@ -39,6 +40,7 @@ paths:
       responses:
         201:
           description: Record Successfully added
+      x-openapi-router-controller: controller
 components:
   schemas:
     user:

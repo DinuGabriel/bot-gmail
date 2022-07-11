@@ -11,7 +11,7 @@ paths:
   /task:
     get:
       description: This operation allows you to feach user mail adress.
-      operationId: getuser_mail
+      operationId: get_user_mail
       parameters:
       - explode: true
         in: query
@@ -29,7 +29,7 @@ paths:
                 $ref: '#/components/schemas/user'
           description: Success Response
       summary: Get mail adress
-      x-openapi-router-controller: openapi_server.controllers.default_controller
+      x-openapi-router-controller: controller
     post:
       description: This allows you to add a new user.
       operationId: add_user
@@ -42,7 +42,7 @@ paths:
         "201":
           description: Record Successfully added
       summary: Add new user
-      x-openapi-router-controller: openapi_server.controllers.default_controller
+      x-openapi-router-controller: controller
 components:
   schemas:
     user:

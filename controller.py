@@ -20,7 +20,9 @@ def add_user(user=None):  # noqa: E501
     """
     if connexion.request.is_json:
         user = User.from_dict(connexion.request.get_json())  # noqa: E501
-    return 'do some magic!'
+
+    # Function Implementation
+    return f'Add user {user}'
 
 
 def get_user_mail(user_mail):  # noqa: E501
@@ -33,4 +35,5 @@ def get_user_mail(user_mail):  # noqa: E501
 
     :rtype: Union[User, Tuple[User, int], Tuple[User, int, Dict[str, str]]
     """
-    return 'do some magic!'
+    # Function Implementation
+    return f'Get user mail for {user_mail}'
