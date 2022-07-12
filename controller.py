@@ -4,8 +4,8 @@ from typing import Dict
 from typing import Tuple
 from typing import Union
 
-from openapi_server.models.user import User  # noqa: E501
-from openapi_server import util
+from openapi.openapi_server.models.user import User  # noqa: E501
+from openapi.openapi_server import util
 
 
 def add_user(user=None):  # noqa: E501
